@@ -6,15 +6,13 @@ from db import create_connection, getRecipients
 
 configEnv = dotenv_values(".env")
 conn = create_connection(configEnv["SQLITE_DB"])
-recipients = getRecipients(conn)
-print(recipients)
 
-# app = FastAPI()
+app = FastAPI()
 
 
-# @app.get("/")
-# def read_root():
-#     return {"Hello": "World"}
+@app.get("/")
+def read_root():
+    return getRecipients(conn)
 
 
 # @app.get("/items/{item_id}")
